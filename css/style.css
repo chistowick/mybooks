@@ -26,16 +26,19 @@ body {
 }
 
 #header {
+        background-image: url(../img/book4.png);
+        background-size: 100% 100%;
 /*        box-shadow: 2px 0px rgba(180,180,180,1); */
 	text-align:center;
-        background-color: rgba(255,255,255,1);
-	margin:0px;
+/*        background-color: rgba(255,255,255,1);*/
+	margin: 0px;
+        padding: 0px;
   	height:auto;
 	min-height:130px;
         position: relative;
 }
 
-#header h1{
+/*#header h1{
         margin: auto 0 auto 0;
         bottom: 16%;
         color: rgba(51,102,153,1);
@@ -45,7 +48,7 @@ body {
         width: 100%;
         display: block;
         position: absolute;
-}
+}*/
 
 #mainMenu {
 /*        box-shadow: 2px 2px rgba(180,180,180,1);*/

@@ -1,52 +1,41 @@
-# Prerequisites
-*.d
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Created by https://www.gitignore.io/api/windows,netbeans
+# Edit at https://www.gitignore.io/?templates=windows,netbeans
 
-# Linker output
-*.ilk
-*.map
-*.exp
+### NetBeans ###
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-# Precompiled Headers
-*.gch
-*.pch
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Dump file
+*.stackdump
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Folder config file
+[Dd]esktop.ini
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Windows shortcuts
+*.lnk
+
+# End of https://www.gitignore.io/api/windows,netbeans

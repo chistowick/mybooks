@@ -101,6 +101,35 @@ body {
 	width:100%;
 	padding-top:20px;
 	padding-bottom:20px;
+        padding-left: 6%;
+        padding-right: 6%;
 	margin:15px auto 0 auto;
         display: block;
+}
+
+#content p{
+        font-family: "TenorSans-Regular","Trebuchet MS", Tahoma, Verdana;
+        font-size: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+}
+
+#content p b{
+        line-height: 200%;
+}
+
+#firstrow {
+    background-color: lightblue;
+}
+
+#ready {
+    font: 150% "Comic Sans MS", TenorSans-Regular, "Trebuchet MS", Tahoma, Verdana; 
+    background-color: rgba(255,204,0,1);
+    color: black;
+}
+
+#ready:hover {
+    font: 150% "Comic Sans MS", TenorSans-Regular, "Trebuchet MS", Tahoma, Verdana; 
+    background-color: #FFF700;
+    color: black;
 }

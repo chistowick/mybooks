@@ -74,65 +74,67 @@ if (!isset($_POST['author'])){
 }
 
     if (isset($_POST['toread'])){    
-        
-    $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? AND idauthor = ?";
+    
+//Подготавливаем запрос к БД
+    $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ORDER BY series, id";
         
         $pdostmt = $dbh->prepare($sql);
         
         $pdostmt->bindParam(1, $_POST['idgenre']);
-        $pdostmt->bindParam(2, $_POST['idauthor']);
         
         $pdostmt->execute();     
         
         $i=0;
+ 
+//Формируем таблицу с результатами запроса к БД        
+        echo '<table border= "solid 1px" >';
+        
+        echo "<tr id='firstrow'>";
+            echo '<td><b>Название</b></td>';
+            echo '<td><b>Автор</b></td>';
+            echo '<td><b>Жанр</b></td>';
+            echo '<td><b>Серия</b></td>';
+        echo '</tr>';
         
         while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
            $i++;     
-           echo 'Название: '.$row['bookname']."</br>"
-                ."Автор: ".$row['author']."</br>"
-                ."Жанр: ".$row['genre']."</br>"
-                ."Серия: ".$row['series']."</br></br>";
+           echo '<tr>';
+           echo '<td>'.$row['bookname'].'</td>';
+           echo '<td>'.$row['author'].'</td>';
+           echo '<td>'.$row['genre'].'</td>';
+           echo '<td>'.$row['series'].'</td>';
+           echo '</tr>';
         }
+        
+        echo '</table>';
         
         if ($i==0){
             echo "<h3>К сожалению, по вашему запросу ничего не найдено.</h3>"; 
         }
         
-        echo '<a href="index.php?pageName=toread">Попробовать ещё раз</a>';
+        echo '</br></br><a href="index.php?pageName=toread"><h4>Попробовать ещё раз</h4></a>';
         
     } else {
-        {$sql = "SELECT * FROM mybooks.authors ORDER BY authorname";
-        $pdostmt=$dbh->prepare($sql);
-        
-        $pdostmt->execute();}
-        
-        //Форма для задания параметров подбора книги
+//Форма для задания параметров подбора книги
         echo '<form action="index.php?pageName=toread" method="post">';
-        echo '<p><select name="idauthor" size="1">';
-        echo '<option disabled>Выберите автора</option>';
         
-            while ($row=$pdostmt->fetch(PDO::FETCH_ASSOC)){
-                echo '<option value='.$row['id'].'>'.$row['authorname'].'</option>';
-            }
+        echo '<p><b>Фантастика</b></p>';
+        echo '<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>';
+        echo '<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>';
+        echo '<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
         
-        echo '</select>';
+        echo '<p><b>Фэнтези</b></p>';
+        echo '<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>';
+        echo '<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>';
+        echo '<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>';
+        echo '<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
         
-        {$sql = 'SELECT * FROM mybooks.genres ORDER BY genrename';
-        $pdostmt=$dbh->prepare($sql);
-        
-        $pdostmt->execute();}
-        
-        echo '<select name="idgenre" size="1">';
-        echo '<option disabled>Выберите жанр</option>';
-        
-            while ($row=$pdostmt->fetch(PDO::FETCH_ASSOC)){
-                echo '<option value='.$row['id'].'>'.$row['genrename'].'</option>';
-            }
-        
-        echo '</select>'; 
+        echo '<p><b>Другое</b></p>';
+        echo '<p><input name="idgenre" type="radio" value="7">Реализм</p>';
+        echo '<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
         
         echo '<input type="hidden" name="toread" value="1">';
-        echo '<input type="submit" value="Готово">';
+        echo "</br><input id='ready' type='submit' value='Готово'>";
         echo '</p></form>';
     }
     echo "</div>";;

@@ -63,7 +63,7 @@ case "characters":
     
 case "toread":
     
-    echo "<div id='content'>";
+    echo "<div id='content'>"; //Начало content
 
 //Проверяем наличие данных в массиве $_POST, переданных из формы поиска книги
 if (!isset($_POST['genre'])){
@@ -76,34 +76,39 @@ if (!isset($_POST['author'])){
     if (isset($_POST['toread'])){    
     
 //Подготавливаем запрос к БД
-    $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ORDER BY series, id";
+    $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ORDER BY author, series, id";
         
         $pdostmt = $dbh->prepare($sql);
-        
         $pdostmt->bindParam(1, $_POST['idgenre']);
-        
         $pdostmt->execute();     
         
         $i=0;
  
 //Формируем таблицу с результатами запроса к БД        
-        echo '<table border= "solid 1px" >';
+        echo '<h2>Рекомендуем почитать следующие книги:</h2>';
+        echo "<table id='booktable'>";
         
         echo "<tr id='firstrow'>";
-            echo '<td><b>Название</b></td>';
-            echo '<td><b>Автор</b></td>';
-            echo '<td><b>Жанр</b></td>';
-            echo '<td><b>Серия</b></td>';
+            echo '<th>Название</th>';
+            echo '<th>Серия</th>';
         echo '</tr>';
         
+           $lastAuthor = 'any';
+        
         while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
-           $i++;     
+           $i++;
+        
+           if ($row['author'] != $lastAuthor){
+               echo "<tr><td class='notrow' colspan='2'></td></tr>";
+               echo "<tr><th class='authorrow' colspan='2'>".$row['author']."</th></tr>";
+           }
+           
            echo '<tr>';
            echo '<td>'.$row['bookname'].'</td>';
-           echo '<td>'.$row['author'].'</td>';
-           echo '<td>'.$row['genre'].'</td>';
            echo '<td>'.$row['series'].'</td>';
            echo '</tr>';
+           
+           $lastAuthor = $row['author'];
         }
         
         echo '</table>';
@@ -112,9 +117,10 @@ if (!isset($_POST['author'])){
             echo "<h3>К сожалению, по вашему запросу ничего не найдено.</h3>"; 
         }
         
-        echo '</br></br><a href="index.php?pageName=toread"><h4>Попробовать ещё раз</h4></a>';
+        echo '</br></br><a href="index.php?pageName=toread"><h3>Выбрать другой жанр</h3></a>';
         
     } else {
+        
 //Форма для задания параметров подбора книги
         echo '<form action="index.php?pageName=toread" method="post">';
         
@@ -129,15 +135,16 @@ if (!isset($_POST['author'])){
         echo '<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>';
         echo '<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
         
-        echo '<p><b>Другое</b></p>';
-        echo '<p><input name="idgenre" type="radio" value="7">Реализм</p>';
+        echo '<p><b>Реализм</b></p>';
+        echo '<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>';
+        echo '<p><input name="idgenre" type="radio" value="7">Классический реализм</p>';
         echo '<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
         
         echo '<input type="hidden" name="toread" value="1">';
         echo "</br><input id='ready' type='submit' value='Готово'>";
-        echo '</p></form>';
+        echo '</form>';
     }
-    echo "</div>";;
+    echo "</div>"; //Конец content
 	break;
 	
 case "quotes":

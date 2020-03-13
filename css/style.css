@@ -1,20 +1,21 @@
 @font-face {
-    font-family: TenorSans-Regular; /* Гарнитура шрифта */
-    src: url(fonts/TenorSans-Regular.ttf) /* Путь к файлу со шрифтом */
+    font-family: NotoSerifDisplay-Bold; /* Гарнитура шрифта */
+    src: url(fonts/NotoSerifDisplay-Bold.ttf) /* Путь к файлу со шрифтом */
    }
 
 
 body {
+        font-family: "Trebuchet MS", Verdana;
         background-position: left bottom;
-	background-image: url(../img/patt3.png);
-	background-repeat: repeat;
+        background-image: url(../img/patt3.png);
+        background-repeat: repeat;
         background-size: 20%;
-	margin: 0px;
-	padding: 0px;
-	min-width: 1259px;
-	position: relative;
-	height:100%;
-	width:100%;
+        margin: 0px;
+        padding: 0px;
+        min-width: 1259px;
+        position: relative;
+        height:100%;
+        width:100%;
 }
 
 #wrapper {
@@ -29,7 +30,7 @@ body {
         background-image: url(../img/book4.png);
         background-size: 100% 100%;
 /*        box-shadow: 2px 0px rgba(180,180,180,1); */
-	text-align:center;
+	text-align:left;
 /*        background-color: rgba(255,255,255,1);*/
 	margin: 0px;
         padding: 0px;
@@ -42,7 +43,7 @@ body {
         margin: auto 0 auto 0;
         bottom: 16%;
         color: rgba(51,102,153,1);
-        font-family: "Comic Sans MS",TenorSans-Regular,"Trebuchet MS", Tahoma, Verdana;
+        font-family: NotoSerifDisplay-Bold,"Comic Sans MS",TenorSans-Regular,"Trebuchet MS", Verdana;
         font-size: 420%;
         font-weight: 420;
         width: 100%;
@@ -67,7 +68,7 @@ body {
 	padding: 0px;
 	height: 100%;
 	vertical-align:bottom;
-	font: bold 137%/2.2 "Comic Sans MS",TenorSans-Regular,"Trebuchet MS", Tahoma, Verdana;
+	font: bold 137%/2.2 "Trebuchet MS", Verdana;
 	font-weight:400;
 	/*flex-grow:1;*/
 	display:inline-block;
@@ -97,39 +98,65 @@ body {
 	border-radius:10px;
 	background-color: rgba(255,255,255,1);
 	vertical-align:top;
-	min-height:1000px;
-	width:100%;
+	min-height:700px;
+	width:90%;
 	padding-top:20px;
 	padding-bottom:20px;
-        padding-left: 6%;
-        padding-right: 6%;
+        padding-left: 5%;
+        padding-right: 5%;
 	margin:15px auto 0 auto;
-        display: block;
 }
 
 #content p{
-        font-family: "TenorSans-Regular","Trebuchet MS", Tahoma, Verdana;
+        font-family: "Trebuchet MS", Verdana;
         font-size: 100%;
         margin-top: 0;
         margin-bottom: 0;
 }
 
 #content p b{
-        line-height: 200%;
+        line-height: 150%;
+}
+
+/*Оформление таблиц*/
+#booktable{
+/*    box-shadow: 0px 0px 2px rgba(100,100,100,0.9);*/
+        border: 2px solid white;
+        border-spacing: 6px;
+        border-collapse: separate;
+}
+
+td {
+        min-width: 100px;
+        background: aquamarine;
 }
 
 #firstrow {
-    background-color: lightblue;
+        background: lightpink;
 }
 
+.authorrow {
+        background: lightblue;
+}
+
+.notrow {
+        background: none;
+        height: 5px;
+}
+
+td, th {
+        padding: 6px 10px 6px 10px;
+}
+        /* Конец оформления таблиц*/
+
+/*Стили для кнопки отправки формы*/
 #ready {
-    font: 150% "Comic Sans MS", TenorSans-Regular, "Trebuchet MS", Tahoma, Verdana; 
-    background-color: rgba(255,204,0,1);
-    color: black;
+        font: 150% "Trebuchet MS", Tahoma, Verdana; 
+        background-color: rgba(255,204,0,1);
+        color: black;
 }
 
 #ready:hover {
-    font: 150% "Comic Sans MS", TenorSans-Regular, "Trebuchet MS", Tahoma, Verdana; 
-    background-color: #FFF700;
-    color: black;
-}
+        background-color: #FFF700;
+        color: black;
+}/*Конец стилей для кнопки отправки формы*/

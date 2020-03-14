@@ -42,10 +42,13 @@
 	<div class="button"><a href="index.php?pageName=toread">ЧТО ПОЧИТАТЬ</a></div>
 	<div class="button"><a href="index.php?pageName=quotes">ЦИТАТЫ</a></div>
 </div>
+    
+<div id='content'> <!--Начало content-->
+    
 <?php 
 if (!isset($_GET['pageName'])) 
 {
-    echo "<div id='content'><p>Здесь будут располагаться статьи стартовой страницы</p></div>";
+    echo "<p>Здесь будут располагаться статьи стартовой страницы</p>";
 } else {
 	
 switch($_GET['pageName']) {
@@ -53,17 +56,15 @@ switch($_GET['pageName']) {
 	
 case "about":
     
-	echo "<div id='content'><p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p></div>";
+	echo "<img id='iam' src='img/iam.jpg'>";
 	break;
 	
 case "characters":
     
-	echo "<div id='content'><p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p></div>";
+	echo "<p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p>";
 	break;
     
 case "toread":
-    
-    echo "<div id='content'>"; //Начало content
 
 //Проверяем наличие данных в массиве $_POST, переданных из формы поиска книги
 if (!isset($_POST['genre'])){
@@ -122,34 +123,34 @@ if (!isset($_POST['author'])){
     } else {
         
 //Форма для задания параметров подбора книги
-        echo '<form action="index.php?pageName=toread" method="post">';
-        
-        echo '<p><b>Фантастика</b></p>';
-        echo '<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>';
-        echo '<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>';
-        echo '<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
-        
-        echo '<p><b>Фэнтези</b></p>';
-        echo '<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>';
-        echo '<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>';
-        echo '<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>';
-        echo '<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
-        
-        echo '<p><b>Реализм</b></p>';
-        echo '<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>';
-        echo '<p><input name="idgenre" type="radio" value="7">Классический реализм</p>';
-        echo '<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
-        
-        echo '<input type="hidden" name="toread" value="1">';
-        echo "</br><input id='ready' type='submit' value='Готово'>";
-        echo '</form>';
+echo '<form action="index.php?pageName=toread" method="post">';
+
+echo '<p><b>Фантастика</b></p>';
+echo '<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>';
+echo '<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>';
+echo '<p><input name="idgenre" type="radio" value="11">Социальная научная фантастика</p>';
+echo '<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
+
+echo '<p><b>Фэнтези</b></p>';
+echo '<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>';
+echo '<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>';
+echo '<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>';
+echo '<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
+
+echo '<p><b>Реализм</b></p>';
+echo '<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>';
+echo '<p><input name="idgenre" type="radio" value="7">Классический реализм</p>';
+echo '<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
+
+echo '<input type="hidden" name="toread" value="1">';
+echo "</br><input id='ready' type='submit' value='Готово'>";
+echo '</form>';
     }
-    echo "</div>"; //Конец content
 	break;
 	
 case "quotes":
     
-	echo "<div id='content'><p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p></div>";
+	echo "<p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p>";
 	break;
 	
 default:
@@ -157,8 +158,9 @@ default:
 } 
 }
 ?>
-
-</div>
+    
+</div><!--Конец content -->
+</div><!--конец wrapper -->
 <div id="footer"><p id="copy">&copy; 2020 Анатолий Чиняев</p></div>
 
 

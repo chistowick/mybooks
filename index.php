@@ -1,7 +1,8 @@
 <?php 
-    include '../htconfig/dbconnect.php'; //Подключаем данные для входа
     
-    try{
+include '../htconfig/dbconnect.php'; //Подключаем данные для входа
+    
+try{
     //Создаем дескриптор базы данных    
     $dbh = new PDO($dsn, $userName, $password);
     //echo "Подключение прошло успешно"."<br/><br/>";
@@ -10,18 +11,34 @@
     echo "Error!:".$e->getMessage();
     die();
 }
-?>
 
+$pageName = 'mainpage'; //по умолчанию считаем, что запрпошена главная страница
+
+//проверяем запрошена ли главная страница или другая
+//и если не главная, то задаем переменной $pageName значение из массива $_GET
+if (isset($_GET['pageName'])){
+    $pageName = $_GET['pageName'];
+}
+
+$sql = "SELECT keywords, description, text FROM mybooks.tmain WHERE pagename = ?";
+    
+    $pdostmt = $dbh->prepare($sql);
+    $pdostmt->bindParam(1, $pageName);
+    $pdostmt->execute();
+    
+    //извлекаем информацию для соответствующей таблицы
+    $mainRow = $pdostmt->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-
 <!--Строка для того, чтобы телефоны не увеличивали шрифт-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="добрая, кофейня, кофе, сладости, благодатная">
-<meta name="description" content="Добрая кофейня в Санкт-Петербурге на ул.Благодатной. Всегда есть время для кофе!">
+<meta name="keywords" content="<?=$mainRow['keywords']?>">
+<meta name="description" content="<?=$mainRow['description']?>">
 
 <title>Мой читательский дневник</title>
 
@@ -46,38 +63,33 @@
 <div id='content'> <!--Начало content-->
     
 <?php 
-if (!isset($_GET['pageName'])) 
-{
-    echo "<p>Здесь будут располагаться статьи стартовой страницы</p>";
-} else {
 	
-switch($_GET['pageName']) {
+switch($pageName){
     
-	
+case "mainpage":
+    
+    echo $mainRow['text'];
+    break;
+    
 case "about":
     
-	echo "<img id='iam' src='img/iam.jpg'>";
-	break;
+    echo "<img id='iam' src='img/iam.jpg'>";
+    echo $mainRow['text'];
+    break;
 	
 case "characters":
     
-	echo "<p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p>";
-	break;
+    echo $mainRow['text'];
+    break;
     
 case "toread":
-
-//Проверяем наличие данных в массиве $_POST, переданных из формы поиска книги
-if (!isset($_POST['genre'])){
-    $_POST['genre'] = '';
-}
-if (!isset($_POST['author'])){
-    $_POST['author'] = '';
-}
-
-    if (isset($_POST['toread'])){    
     
-//Подготавливаем запрос к БД
-    $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ORDER BY author, series, id";
+//Если из формы был передан запрос на формирование таблицы с рекомендациями
+if (isset($_POST['toread'])){    
+    
+        //Подготавливаем запрос к БД
+        $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ";
+        $sql .= "ORDER BY author, series, id";
         
         $pdostmt = $dbh->prepare($sql);
         $pdostmt->bindParam(1, $_POST['idgenre']);
@@ -86,83 +98,83 @@ if (!isset($_POST['author'])){
         $i=0;
  
 //Формируем таблицу с результатами запроса к БД        
-        echo '<h2>Рекомендуем почитать следующие книги:</h2>';
-        echo "<table id='booktable'>";
-        
-        echo "<tr id='firstrow'>";
-            echo '<th>Название</th>';
-            echo '<th>Серия</th>';
-        echo '</tr>';
+        echo "<h2>Рекомендуем почитать следующие книги:</h2>
+            <table id='booktable'>
+                <tr id='firstrow'>
+                    <th>Название</th>
+                    <th>Серия</th>
+                </tr>";
         
            $lastAuthor = 'any';
-        
-        while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
-           $i++;
-        
-           if ($row['author'] != $lastAuthor){
-               echo "<tr><td class='notrow' colspan='2'></td></tr>";
-               echo "<tr><th class='authorrow' colspan='2'>".$row['author']."</th></tr>";
-           }
            
-           echo '<tr>';
-           echo '<td>'.$row['bookname'].'</td>';
-           echo '<td>'.$row['series'].'</td>';
-           echo '</tr>';
-           
-           $lastAuthor = $row['author'];
-        }
-        
+//Перебираем все извлеченные строки и формируем таблицу построчно       
+while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
+   $i++;
+   
+   //Если автор сменяется, выводим пустой табличный ряд и имя нового автора
+    if ($row['author'] != $lastAuthor){
+        echo "<tr><td class='notrow' colspan='2'></td></tr>
+            <tr><th class='authorrow' colspan='2'>".$row['author']."</th></tr>";
+    }
+        echo '<tr>';
+        echo '<td>'.$row['bookname'].'</td>';
+        echo '<td>'.$row['series'].'</td>';
+        echo '</tr>';
+
+       $lastAuthor = $row['author'];
+} //конец while
         echo '</table>';
+    //Если счетчик цикла вывода ничего не насчитад,выводим сообщение    
+    if ($i==0){
+        echo "<h3>К сожалению, по вашему запросу ничего не найдено.</h3>"; 
+    }
+        //вернуться к выбору другого жанра
+        echo '</br></br><a href="index.php?pageName=toread">
+              <h3>Выбрать другой жанр</h3></a>';
         
-        if ($i==0){
-            echo "<h3>К сожалению, по вашему запросу ничего не найдено.</h3>"; 
-        }
+ //конец успешного if (isset($_POST['toread'])
+ //Завершение формирования таблицы вывода рекомендаций
         
-        echo '</br></br><a href="index.php?pageName=toread"><h3>Выбрать другой жанр</h3></a>';
-        
-    } else {
-        
-//Форма для задания параметров подбора книги
+} else {
+    
+//Если на страницу ещё не было запроса на выдачу рекомендаций, 
+//то есть еще не было передано $_POST['toread'], тогда выводим форму
 echo '<form action="index.php?pageName=toread" method="post">';
 
-echo '<p><b>Фантастика</b></p>';
-echo '<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>';
-echo '<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>';
-echo '<p><input name="idgenre" type="radio" value="11">Социальная научная фантастика</p>';
-echo '<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
+echo '<p><b>Фантастика</b></p>
+<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>
+<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>
+<p><input name="idgenre" type="radio" value="11">Социальная научная фантастика</p>
+<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
 
-echo '<p><b>Фэнтези</b></p>';
-echo '<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>';
-echo '<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>';
-echo '<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>';
-echo '<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
+echo '<p><b>Фэнтези</b></p>
+<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>
+<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>
+<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>
+<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
 
-echo '<p><b>Реализм</b></p>';
-echo '<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>';
-echo '<p><input name="idgenre" type="radio" value="7">Классический реализм</p>';
-echo '<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
+echo '<p><b>Реализм</b></p>
+<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>
+<p><input name="idgenre" type="radio" value="7">Классический реализм</p>
+<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
 
-echo '<input type="hidden" name="toread" value="1">';
-echo "</br><input id='ready' type='submit' value='Готово'>";
-echo '</form>';
-    }
+echo '<input type="hidden" name="toread" value="1">
+</br><input id="ready" type="submit" value="Готово">
+</form>';
+}
 	break;
 	
 case "quotes":
     
-	echo "<p>Здесь будет располагаться текст страницы ".$_GET['pageName']."</p>";
-	break;
+    echo $mainRow['text'];
+    break;
 	
-default:
-	break;
-} 
+default: break;
 }
 ?>
-    
 </div><!--Конец content -->
 </div><!--конец wrapper -->
 <div id="footer"><p id="copy">&copy; 2020 Анатолий Чиняев</p></div>
-
 
 </body>
 </html>

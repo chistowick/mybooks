@@ -52,13 +52,13 @@ $sql = "SELECT keywords, description, text FROM mybooks.tmain WHERE pagename = ?
 <div id="header">
 <!--    <h1>Мой читательский дневник</h1>-->
 </div>
-<div id="mainMenu">
-	<div class="button"><a href="index.php">СТАТЬИ</a></div>
-	<div class="button"><a href="index.php?pageName=about">О БЛОГЕ</a></div>
-	<div class="button"><a href="index.php?pageName=characters">ПЕРСОНАЖИ</a></div>
-	<div class="button"><a href="index.php?pageName=toread">ЧТО ПОЧИТАТЬ</a></div>
-	<div class="button"><a href="index.php?pageName=quotes">ЦИТАТЫ</a></div>
-</div>
+    <div id="mainMenu">
+<div class="button"><a href="index.php">СТАТЬИ</a></div>
+<div class="button"><a href="index.php?pageName=about">О БЛОГЕ</a></div>
+<div class="button"><a href="index.php?pageName=characters">ПЕРСОНАЖИ</a></div>
+<div class="button"><a href="index.php?pageName=toread">ЧТО ПОЧИТАТЬ</a></div>
+<div class="button"><a href="index.php?pageName=quotes">ЦИТАТЫ</a></div>
+    </div>
     
 <div id='content'> <!--Начало content-->
     
@@ -137,36 +137,17 @@ while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
         
 } else {
     
-//Если на страницу ещё не было запроса на выдачу рекомендаций, 
-//то есть еще не было передано $_POST['toread'], тогда выводим форму
-echo '<form action="index.php?pageName=toread" method="post">';
+//Если на страницу ещё не было запроса на выдачу рекомендаций, то есть не было 
+//передано $_POST['toread'], тогда подключаем файл с формой выбора жанра книги
+    
+include 'includes/formgenre.php';
 
-echo '<p><b>Фантастика</b></p>
-<p><input name="idgenre" type="radio" value="4">Научная фантастика</p>
-<p><input name="idgenre" type="radio" value="8">Научная фантастика, детектив</p>
-<p><input name="idgenre" type="radio" value="11">Социальная научная фантастика</p>
-<p><input name="idgenre" type="radio" value="9">Юмористическая научная фантастика</p>';
-
-echo '<p><b>Фэнтези</b></p>
-<p><input name="idgenre" type="radio" value="5">Городское фэнтези</p>
-<p><input name="idgenre" type="radio" value="2">Подростковое фэнтези</p>
-<p><input name="idgenre" type="radio" value="1">Эпическое фэнтези</p>
-<p><input name="idgenre" type="radio" value="3">Юмористическое фэнтези</p>';
-
-echo '<p><b>Реализм</b></p>
-<p><input name="idgenre" type="radio" value="10">Историко-приключенческий роман</p>
-<p><input name="idgenre" type="radio" value="7">Классический реализм</p>
-<p><input name="idgenre" type="radio" value="6">Юмористическая повесть</p>';
-
-echo '<input type="hidden" name="toread" value="1">
-</br><input id="ready" type="submit" value="Готово">
-</form>';
 }
 	break;
 	
 case "quotes":
     
-    echo $mainRow['text'];
+    include 'includes/quotes.php';
     break;
 	
 default: break;

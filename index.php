@@ -101,8 +101,8 @@ if (isset($_POST['toread'])){
         echo "<h2>Рекомендуем почитать следующие книги:</h2>
             <table id='booktable'>
                 <tr id='firstrow'>
-                    <th>Название</th>
-                    <th>Серия</th>
+                    <th style='min-width: 150px;'>Название</th>
+                    <th style='min-width: 150px;'>Серия</th>
                 </tr>";
         
            $lastAuthor = 'any';

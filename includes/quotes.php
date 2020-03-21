@@ -3,10 +3,7 @@
 /* 
  * 
  */
-echo "<h2>Цитаты это хорошо!<h2>";
-echo '<form action="index.php?pageName=quotes" method="post">
-        <input type="hidden" name="quotes" value="active">
-        <input id="ready" type="submit" value="Показать пять случайных цитат"></form>';
+echo "<h2>Цитаты это хорошо!</h2>";
 
 if (isset($_POST['quotes'])){
 //Узнаем количество строк в тпблице с цитататми (tquotes)
@@ -38,7 +35,7 @@ while(count($result_array) < 5){
     }
 }
 // Формируем подготовленный запрос к БД
-$sql = "SELECT quote, bookname FROM tquotes WHERE ";
+$sql = "SELECT quote, bookname, author FROM tquotes WHERE ";
 $sql .= "id = ? OR id = ? OR id = ? OR id = ? OR id = ?";
 
 $pdostmt = $dbh->prepare($sql);
@@ -53,7 +50,13 @@ $pdostmt->execute();
 
 //Выводим выбранные цитаты
 while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
-    echo "<p><strong>".$row['quote']."</strong></p></br>";
-    echo '<p style="text-align: right; font-style: italic">'.$row['bookname']."</p>";
+    echo "<div class='quotes'>".$row['quote']."</p></br>";
+    echo '<p style="text-align: right; font: 16px important; font-style: italic;">'.$row['bookname']."</p>";
+    echo '<p style="text-align: right; font: 16px important; font-style: italic;">'.$row['author']."</p>";
+    echo "</div>";
 }
 }
+
+echo '<form action="index.php?pageName=quotes" method="post">
+        <input type="hidden" name="quotes" value="active">
+        <input id="ready" type="submit" value="Показать пять случайных цитат"></form>';

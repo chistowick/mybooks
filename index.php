@@ -68,7 +68,24 @@ switch($pageName){
     
 case "mainpage":
     
-    echo $mainRow['text'];
+    require_once 'classes/publications.php';
+    
+    //Формируем запрос к таблице со статьями и отзывами
+    $sql = "SELECT * FROM tpublications ORDER BY id DESC";
+    
+    $pdostmt = $dbh->prepare($sql);
+    $pdostmt->execute();
+    
+    $publications_row = array();
+    
+    while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
+        $publications_row[] = new $row['type']($row);
+    }
+    
+    foreach ($publications_row as $one_publication){
+        $one_publication->printItem();
+    }
+    
     break;
     
 case "about":

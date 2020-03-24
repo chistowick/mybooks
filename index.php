@@ -105,11 +105,11 @@ case "toread":
 if (isset($_POST['toread'])){    
     
         //Подготавливаем запрос к БД
-        $sql = "SELECT * FROM mybooks.books WHERE idgenre = ? ";
+        $sql = "SELECT * FROM mybooks.books WHERE id_genre = ? ";
         $sql .= "ORDER BY author, series, id";
         
         $pdostmt = $dbh->prepare($sql);
-        $pdostmt->bindParam(1, $_POST['idgenre']);
+        $pdostmt->bindParam(1, $_POST['id_genre']);
         $pdostmt->execute();     
         
         $i=0;
@@ -134,7 +134,7 @@ while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
             <tr><th class='authorrow' colspan='2'>".$row['author']."</th></tr>";
     }
         echo '<tr>';
-        echo '<td>'.$row['bookname'].'</td>';
+        echo '<td>'.$row['book_name'].'</td>';
         echo '<td>'.$row['series'].'</td>';
         echo '</tr>';
 

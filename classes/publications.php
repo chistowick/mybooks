@@ -6,8 +6,9 @@
  * and open the template in the editor.
  */
 
-class Publications
-{
+class Publications {
+
+    public $id;
     public $title;
     public $short_description;
     public $text;
@@ -16,9 +17,11 @@ class Publications
     public $disliked;
     public $datestamp;
     public $author;
-
+    public $href;
 
     public function __construct(array $row) {
+        $this->id = $row['id'];
+        $this->href = 'index.php?mainpage=one_page&publication_id=' . $this->id;
         $this->title = $row['title'];
         $this->short_description = $row['short_description'];
         $this->text = $row['text'];
@@ -28,29 +31,49 @@ class Publications
         $this->datestamp = $row['datestamp'];
         $this->author = $row['author'];
     }
+
 }
 
-class Articles extends Publications
-{
+class Articles extends Publications {
+
     public function printItem() {
         echo '<div clsss=publications"><br><hr><br>';
-        echo "<h3 class='title'>".$this->title."</h3>";
-        echo "<p>".$this->short_description."</p>";
-        echo '<p style="text-align: right;">'.$this->datestamp."</p>";
+        echo "<a href='" . $this->href . "'>";
+        echo "<h3 class='title'>" . $this->title . "</h3></a>";
+        echo "<p>" . $this->short_description . "</p>";
+        echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
         echo '<hr style="clear: both"><br></div>';
     }
+
+    public function printOnePage() {
+        echo "<h2>" . $this->title . "</h2>";
+        echo $this->text;
+        echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
+    }
+
 }
 
-class Reviews extends Publications 
-{
+class Reviews extends Publications {
+
     public function printItem() {
-        echo '<div clsss=publications"><br><hr><br>';
-        echo '<img class="imgReviews" src="'.$this->main_image.'">';
-        echo "<h3 class='title'>".$this->title."</h3>";
-        echo '<span style="text-align: right;">('.$this->author.")</span>";
-        echo '<div class="liked-disliked"><ul>'.$this->liked.'</ul></div>';
-        echo '<div class="liked-disliked"><ul>'.$this->disliked.'</ul></div>';
-        echo '<br><p style="text-align: right;">'.$this->datestamp."</p>";
+
+        echo "<div clsss='publications'><br><hr><br>";
+        echo "<a href='" . $this->href . "'>";
+        echo "<img class='imgReviews' src='" . $this->main_image . "'></a>";
+        echo "<a href='" . $this->href . "'>";
+        echo "<h3 class='title'>" . $this->title . "</h3></a>";
+        echo '<span style="text-align: right;">(' . $this->author . ")</span>";
+        echo '<div class="liked-disliked"><ul>' . $this->liked . '</ul></div>';
+        echo '<div class="liked-disliked"><ul>' . $this->disliked . '</ul></div>';
+        echo '<br><p style="text-align: right;">' . $this->datestamp . "</p>";
         echo '<hr style="clear: both"><br></div>';
     }
+
+    public function printOnePage() {
+        echo '<img class="imgReviews" src="' . $this->main_image . '">';
+        echo "<h2>" . $this->title . "</h2>";
+        echo $this->text;
+        echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
+    }
+
 }

@@ -120,11 +120,6 @@ switch ($pageName) {
         echo $mainRow['text'];
         break;
 
-    case "characters":
-
-        echo $mainRow['text'];
-        break;
-
     case "toread":
 
         //Если из формы был передан запрос на формирование 
@@ -196,6 +191,11 @@ switch ($pageName) {
     case "quotes":
 
         include 'includes/quotes.php';
+        break;
+    
+    case "contacts":
+
+        echo $mainRow['text'];
         break;
 
     default: break;

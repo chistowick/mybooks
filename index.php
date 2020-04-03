@@ -195,7 +195,7 @@ switch ($pageName) {
     
     case "contacts":
 
-        echo $mainRow['text'];
+        require 'includes\feedback.php';
         break;
 
     default: break;

@@ -59,4 +59,4 @@ while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
 
 echo '<form action="index.php?pageName=quotes" method="post">
         <input type="hidden" name="quotes" value="active">
-        <input id="ready" type="submit" value="Показать пять случайных цитат"></form>';
+        <input class="form_button" type="submit" value="Показать пять случайных цитат"></form>';

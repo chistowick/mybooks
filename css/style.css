@@ -2,164 +2,157 @@
     font-family: NotoSerifDisplay-Bold; /* Гарнитура шрифта */
     src: url(fonts/NotoSerifDisplay-Bold.ttf) /* Путь к файлу со шрифтом */
    }
-
-
+   
 body {
-        font-family: "Trebuchet MS", Verdana;
-        background-position: left bottom;
-        background-image: url(../img/patt3.png);
-        background-repeat: repeat;
-        background-size: 20%;
-        margin: 0px;
-        padding: 0px;
-        min-width: 1200px;
-        position: relative;
-        height:100%;
-        width:100%;
+    font-family: "Trebuchet MS", Verdana;
+    background-position: left bottom;
+    background-image: url(../img/patt3.png);
+    background-repeat: repeat;
+    background-size: 20%;
+    margin: 0px;
+    padding: 0px;
+    min-width: 1200px;
+    position: relative;
+    height:100%;
+    width:100%;
 }
 
 #wrapper {
-        max-width:1300px ;
-  	margin: auto;
-	padding: 0;
-	width: 75%;
-	position: relative;
+    max-width:1300px ;
+    margin: auto;
+    padding: 0;
+    width: 75%;
+    position: relative;
 }
 
 #header {
-        background-image: url(../img/HeaderBook.png);
-        background-size: 100% 100%;
-/*        box-shadow: 2px 0px rgba(180,180,180,1); */
-	text-align:left;
-/*        background-color: rgba(255,255,255,1);*/
-	margin: 0px 0px;
-        padding: 0px;
-  	height:auto;
-	min-height:130px;
-        position: relative;
+    background-image: url(../img/HeaderBook.png);
+    background-size: 100% 100%;
+    margin: 0px 0px;
+    padding: 0px;
+    height:auto;
+    min-height:130px;
+    position: relative;
 }
 
 /*#header h1{
-        margin: auto 0 auto 0;
-        bottom: 16%;
-        color: rgba(51,102,153,1);
-        font-family: NotoSerifDisplay-Bold,"Comic Sans MS",TenorSans-Regular,"Trebuchet MS", Verdana;
-        font-size: 420%;
-        font-weight: 420;
-        width: 100%;
-        display: block;
-        position: absolute;
+    margin: auto 0 auto 0;
+    bottom: 16%;
+    color: rgba(51,102,153,1);
+    font-family: NotoSerifDisplay-Bold,"Comic Sans MS",TenorSans-Regular,"Trebuchet MS", Verdana;
+    font-size: 420%;
+    font-weight: 420;
+    width: 100%;
+    display: block;
+    position: absolute;
 }*/
 
 #mainMenu {
-/*        box-shadow: 2px 2px rgba(180,180,180,1);*/
-        width: 100%;
-	color:rgba(0,0,0,1);
-	padding: 0px;
-	min-height: 40px;
-	text-align:center;
-	display: flex;
-	justify-content: center;
-        border: solid 1px lightblue;
+    width: 100%;
+    color:rgba(0,0,0,1);
+    padding: 0px;
+    min-height: 40px;
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    border: solid 1px lightblue;
 }
 
 .button {
-	width: 20%;
-	margin: 0px;
-	padding: 0px;
-	height: 100%;
-	vertical-align:bottom;
-	font: 137%/2.2 "Trebuchet MS", Verdana;
-	font-weight:400;
-	/*flex-grow:1;*/
-/*	display:inline-block;*/
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    vertical-align:bottom;
+    font: 137%/2.2 "Trebuchet MS", Verdana;
+    font-weight:400;
 }
 
 .button a {
-	background-color: rgba(255,204,0,1);
-	color:rgba(0,0,0,1);
-	display:block;
-	height:100%;
-	text-align:center;
-	text-decoration:none;
-	cursor:pointer;
+    background-color: rgba(255,204,0,1);
+    color:rgba(0,0,0,1);
+    display:block;
+    height:100%;
+    text-align:center;
+    text-decoration:none;
+    cursor:pointer;
 }
 
 .button a:hover{
-        box-shadow: 0px 6px rgba(150,150,150,1);
-	background-color: #FFF700;
+    box-shadow: 0px 6px rgba(150,150,150,1);
+    background-color: #FFF700;
 }
 
 #footer {
-	text-align:center;
-	}
+    text-align:center;
+}
 
 #content{
-        box-shadow: 0 0 40px 2px rgba(255,255,255,0.6);
-	border-radius:10px;
-	background-color: rgba(255,255,255,1);
-	vertical-align:top;
-	min-height:700px;
-	width:90%;
-	padding-top:40px;
-	padding-bottom:20px;
-        padding-left: 5%;
-        padding-right: 5%;
-	margin:15px auto 0 auto;
+    border-radius:10px;
+    background-color: rgba(255,255,255,1);
+    vertical-align:top;
+    height: 100%;
+    min-height:700px;
+    width:90%;
+    padding-top:40px;
+    padding-bottom:20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin:15px auto 0 auto;
 }
 
 #content p{
-        font-family: "Trebuchet MS", Verdana;
-        font-size: 100%;
-        margin-top: 16px;
-        margin-bottom: 0;
-        line-height: 170%;
-        text-align: justify;
-        text-indent: 40px;
+    font-family: "Trebuchet MS", Verdana;
+    font-size: 100%;
+    margin-top: 16px;
+    margin-bottom: 0;
+    line-height: 170%;
+    text-align: justify;
+    text-indent: 40px;
 }
 
 /*Оформление таблиц с книгами*/
 #booktable{
-/*    box-shadow: 0px 0px 2px rgba(100,100,100,0.9);*/
-        border: 2px solid white;
-        border-spacing: 6px;
-        border-collapse: separate;
+    border: 2px solid white;
+    border-spacing: 6px;
+    border-collapse: separate;
 }
 
 td {
-        min-width: 100px;
-        background: aquamarine;
+    min-width: 100px;
+    background: aquamarine;
 }
 
 #firstrow {
-        background: lightpink;
+    background: lightpink;
 }
 
 .authorrow {
-        background: lightblue;
+    background: lightblue;
 }
 
 .notrow {
-        background: none;
-        height: 5px;
+    background: none;
+    height: 5px;
 }
 
 td, th {
-        padding: 6px 10px 6px 10px;
+    padding: 6px 10px 6px 10px;
 }
-        /* Конец оформления таблиц*/
+/* Конец оформления таблиц*/
 
 /*Стили для кнопки отправки формы*/
 #ready {
-        font: 150% "Trebuchet MS", Tahoma, Verdana; 
-        background-color: rgba(255,204,0,1);
-        color: black;
+    font: 150% "Trebuchet MS", Tahoma, Verdana; 
+    background-color: rgba(255,204,0,1);
+    color: black;
 }
 
 #ready:hover {
-        background-color: #FFF700;
-        color: black;
-}/*Конец стилей для кнопки отправки формы*/
+    background-color: #FFF700;
+    color: black;
+}
+/*Конец стилей для кнопки отправки формы*/
 
 #iam {
     float: left;
@@ -201,7 +194,6 @@ div.quotes{
 }
 
 .imgReviews {
-    
     width: 25%;
     height: auto;
     float: left;
@@ -220,4 +212,100 @@ div.quotes{
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
+}
+
+/*Оформление формы обратной связи*/
+
+.feedback input, textarea {
+    padding: 8px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+/*  margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;*/
+    font: 100% "Trebuchet MS", Tahoma, Verdana; 
+}
+
+.feedback input[type=text]:focus, 
+.feedback input[type=email]:focus, 
+textarea:focus{
+    outline: none;
+    border: 2px solid gray;
+    border-radius: 10px;
+}    
+textarea {
+    width: calc(100% - 18px);
+    margin-top: 5px;
+    resize: none;
+}
+
+.feedback {
+    position: relative;
+    min-height: 40px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
+
+#textAreaBlock {
+    margin-top: 20px;
+    min-height: 16px;
+}
+
+.feedback label {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 33%;
+    bottom: 5px;
+    left: 0;
+}
+
+.feedback input {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#name, #email {
+    box-sizing: border-box;
+    width: 50%;
+    margin-right: 15%;
+}
+
+#subj {
+    box-sizing: border-box;
+    width: 65%;
+    margin-right: 0;
+}
+
+.form_button {
+    padding: 10px 20px !important;
+    border-radius: 10px;
+    font: 120% "Trebuchet MS", Tahoma, Verdana !important ;
+    background-color: #6bdb96;
+    min-width: 50px;
+    min-height: 40px;
+    border: none;
+    cursor:pointer;
+}
+
+.form_button:hover {
+    background-color: #77f7a8;
+}
+
+/*.feedback input, textarea: {
+    border: 2px solid aqua;
+    border-radius: 10px;
+}*/
+#feedback_block{
+    width: 50%;
+    float: left;
+    padding-top: 30px;
+}
+
+#quill_block{
+    width: 45%;
+    float: right;
+    padding-top: 30px;
 }

@@ -12,7 +12,7 @@ echo '<form action="index.php?pageName=toread" method="post">';
 
 echo '<p><b>Фантастика</b></p>
     <ul>
-<li><label><input name="id_genre" type="radio" value="4">Научная фантастика</label></li>
+<li><label><input name="id_genre" type="radio" value="4" checked>Научная фантастика</label></li>
 <li><label><input name="id_genre" type="radio" value="8">Научная фантастика, детектив</label></li>
 <li><label><input name="id_genre" type="radio" value="11">Социальная научная фантастика</label></li>
 <li><label><input name="id_genre" type="radio" value="9">Юмористическая научная фантастика</label></li>
@@ -34,5 +34,5 @@ echo '<p><b>Реализм</b></p>
     </ul>';
 
 echo '<input type="hidden" name="toread" value="1">
-</br><input id="ready" type="submit" value="Готово">
+</br><input class="form_button" type="submit" value="Готово">
 </form>';

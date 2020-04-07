@@ -44,6 +44,7 @@ $sql = "SELECT keywords, description, text FROM mybooks.tmain WHERE pagename = ?
 
 <!--Подключение таблицы стилей-->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.png" type="image/png">
 
 </head>
 <body>

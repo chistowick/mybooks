@@ -111,6 +111,11 @@ body {
     text-indent: 40px;
 }
 
+#content h2 {
+    text-align: center;
+    line-height: 170%;
+}
+
 /*Оформление таблиц с книгами*/
 #booktable{
     border: 2px solid white;
@@ -170,6 +175,14 @@ div.quotes{
     font: 18px "Trebuchet MS", Tahoma, Verdana;
     font-style: italic;
     line-height: 150%;
+    text-indent: 0px;
+}
+
+/*Стиль имени автора и книги в цитатах:*/
+.source{ 
+    text-align: right !important;
+    font: 16px "Trebuchet MS", Tahoma, Verdana !important; 
+    font-style: italic !important;
 }
 
 #content div.quotes p, span{
@@ -280,6 +293,7 @@ textarea {
 }
 
 .form_button {
+    display: block;
     padding: 10px 20px !important;
     border-radius: 10px;
     font: 120% "Trebuchet MS", Tahoma, Verdana !important ;

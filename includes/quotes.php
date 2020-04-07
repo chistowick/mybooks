@@ -3,7 +3,14 @@
 /* 
  * 
  */
-echo "<h2>Цитаты это хорошо!</h2>";
+echo "<h2>Лучше, чем цитаты, могут быть только случайно отобранные цитаты.
+        Жмякните на кнопку!</h2>";
+
+echo '<form action="index.php?pageName=quotes" method="post">
+        <input type="hidden" name="quotes" value="active">
+        <input style="margin-left: auto; margin-right: auto;"
+        class="form_button" type="submit" value="Показать пять случайных цитат">
+        </form>';
 
 if (isset($_POST['quotes'])){
 //Узнаем количество строк в тпблице с цитататми (tquotes)
@@ -50,13 +57,15 @@ $pdostmt->execute();
 
 //Выводим выбранные цитаты
 while ($row = $pdostmt->fetch(PDO::FETCH_ASSOC)){
-    echo "<div class='quotes'>".$row['quote']."</p></br>";
-    echo '<p style="text-align: right; font: 16px important; font-style: italic;">'.$row['bookname']."</p>";
-    echo '<p style="text-align: right; font: 16px important; font-style: italic;">'.$row['author']."</p>";
+    echo "<div class='quotes'>".$row['quote']."</br>";
+    echo '<p class="source">'.$row['bookname']."</p>";
+    echo '<p class="source">'.$row['author']."</p>";
     echo "</div>";
-}
 }
 
 echo '<form action="index.php?pageName=quotes" method="post">
         <input type="hidden" name="quotes" value="active">
-        <input class="form_button" type="submit" value="Показать пять случайных цитат"></form>';
+        <input style="margin-left: auto; margin-right: auto;"
+        class="form_button" type="submit" value="Показать пять случайных цитат">
+        </form>';
+}

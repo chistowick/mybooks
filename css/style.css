@@ -104,11 +104,10 @@ body {
 #content p{
     font-family: "Trebuchet MS", Verdana;
     font-size: 100%;
-    margin-top: 16px;
-    margin-bottom: 0;
     line-height: 170%;
     text-align: justify;
     text-indent: 40px;
+    margin-top: 0;
 }
 
 #content h2 {
@@ -163,7 +162,7 @@ td, th {
     float: left;
     width: 32%;
     box-shadow: 0px 0px 5px 1px rgba(100,100,220,1);
-    margin: 0 20px 20px 0;
+    margin: 0 30px 30px 0;
 }
 
 div.quotes{
@@ -184,12 +183,15 @@ div.quotes{
     font: 16px "Trebuchet MS", Tahoma, Verdana !important; 
     font-style: italic !important;
 }
+/*End*/
 
-#content div.quotes p, span{
-    display: block;
+/*Цитаты из базы*/
+#content div.quotes p {
     margin:0;
 }
+/*End*/
 
+/*Радиокнопки в списке выбора жанра*/
 #content ul li{
     font: 100% "Trebuchet MS", Tahoma, Verdana; 
     list-style-type: none;
@@ -205,7 +207,9 @@ div.quotes{
     background-color: lightblue;
     border-radius: 5px;
 }
+/*End*/
 
+/*Обзоры*/
 .imgReviews {
     width: 25%;
     height: auto;
@@ -214,28 +218,77 @@ div.quotes{
     margin: 0 20px 20px 0;
 }
 
-.liked-disliked{
-    display: inline-block;
-    text-align: justify;
-    min-width: 280px;
-    width: 25%;
-}
-
 .title{
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
 }
 
-/*Оформление формы обратной связи*/
+.author {
+    text-align: right; 
+    display: block !important;
+}
+
+.datestamp {
+    display: block !important;
+    text-align: right !important;
+    clear: both !important;
+}
+
+.liked-disliked{
+    display: flex;
+    justify-content: flex-start;
+}
+
+ul.disliked {
+    /*list-style-image: url(../img/minus.png);*/
+    display: block;
+    width: 50%;
+}
+
+ul.disliked li {
+  background: url(../img/minus.png) no-repeat left top;
+  list-style-type: none;
+  padding-left: 25px;
+}
+
+ul.liked {
+/*    list-style-image: url(../img/plus.png);*/
+    display: block;
+    width: 50%;
+}
+
+ul.liked li {
+  background: url(../img/plus.png) no-repeat left center;
+  list-style-type: none;
+  padding-left: 25px;
+}
+
+.stars {
+    margin: 0;
+}
+/*Ссылки на главную страницу*/
+.back_href {
+    
+}
+
+/*Форма обратной связи*/
+#feedback_block{
+    width: 50%;
+    float: left;
+    padding-top: 30px;
+}
+
+#quill_block{
+    width: 45%;
+    float: right;
+    padding-top: 30px;
+}
 
 .feedback input, textarea {
     padding: 8px;
     border: 2px solid lightgray;
     border-radius: 10px;
-/*  margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;*/
     font: 100% "Trebuchet MS", Tahoma, Verdana; 
 }
 
@@ -291,7 +344,9 @@ textarea {
     width: 65%;
     margin-right: 0;
 }
+/*End*/
 
+/*Кнопки на сайте*/
 .form_button {
     display: block;
     padding: 10px 20px !important;
@@ -307,19 +362,4 @@ textarea {
 .form_button:hover {
     background-color: #77f7a8;
 }
-
-/*.feedback input, textarea: {
-    border: 2px solid aqua;
-    border-radius: 10px;
-}*/
-#feedback_block{
-    width: 50%;
-    float: left;
-    padding-top: 30px;
-}
-
-#quill_block{
-    width: 45%;
-    float: right;
-    padding-top: 30px;
-}
+/*End*/

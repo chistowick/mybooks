@@ -62,10 +62,12 @@ class Reviews extends Publications {
         echo "<img class='imgReviews' src='" . $this->main_image . "'></a>";
         echo "<a href='" . $this->href . "'>";
         echo "<h3 class='title'>" . $this->title . "</h3></a>";
-        echo '<span style="text-align: right;">(' . $this->author . ")</span>";
-        echo '<div class="liked-disliked"><ul>' . $this->liked . '</ul></div>';
-        echo '<div class="liked-disliked"><ul>' . $this->disliked . '</ul></div>';
-        echo '<br><p style="text-align: right;">' . $this->datestamp . "</p>";
+        echo '<span class="author">(' . $this->author . ")</span>";
+        echo '<div class="liked-disliked">';
+        echo '<ul class="liked">' . $this->liked . '</ul>';
+        echo '<ul class="disliked">' . $this->disliked . '</ul>';
+        echo '</div>';
+        echo '<br><p class="datestamp">' . $this->datestamp . "</p>";
         echo '<hr style="clear: both"><br></div>';
     }
 
@@ -74,6 +76,9 @@ class Reviews extends Publications {
         echo "<h2>" . $this->title . "</h2>";
         echo $this->text;
         echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
+        echo '<h3 class="back_href">';
+        echo '<a href="index.php">Вернуться на главную страницу</a>';
+        echo '</h3>';
     }
 
 }

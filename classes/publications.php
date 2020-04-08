@@ -40,15 +40,19 @@ class Articles extends Publications {
         echo '<div clsss=publications"><br><hr><br>';
         echo "<a href='" . $this->href . "'>";
         echo "<h3 class='title'>" . $this->title . "</h3></a>";
-        echo "<p>" . $this->short_description . "</p>";
+        echo '<p style="margin-top: 16px;">' . $this->short_description . "</p>";
         echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
         echo '<hr style="clear: both"><br></div>';
     }
 
     public function printOnePage() {
         echo "<h2>" . $this->title . "</h2>";
+        echo $this->short_description;
         echo $this->text;
         echo '<p style="text-align: right;">' . $this->datestamp . "</p>";
+        echo '<h3 class="back_href">';
+        echo '<a href="index.php">Вернуться на главную страницу</a>';
+        echo '</h3>';
     }
 
 }

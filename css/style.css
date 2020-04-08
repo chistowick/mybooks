@@ -209,6 +209,15 @@ div.quotes{
 }
 /*End*/
 
+/*Фото внутри публикаций*/
+.imgPublications {
+    width: 40%;
+    height: auto;
+    float: right;
+    box-shadow: 0px 0px 5px 1px rgba(100,100,220,1);
+    margin: 0 0 8px 20px;
+}
+
 /*Обзоры*/
 .imgReviews {
     width: 25%;
@@ -219,8 +228,7 @@ div.quotes{
 }
 
 .title{
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin: 0 10% 0 10%;
     text-align: center;
 }
 

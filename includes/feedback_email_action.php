@@ -9,10 +9,10 @@ $to = "chistowick@yandex.ru";
 $subject = $_POST['feedback_message_subject'];
 
 $message = "Имя пользователя: " . $_POST['feedback_user_name'] . "\r\n";
-$message .= "Email пользователя: " . $_POST['feedback_user_email'] . "\r\n";
-$message .= "Текст письма:"  . "\r\n\r\n" . $_POST['feedback_message'] ;
+$message .= "Email пользователя: " . $_POST['feedback_user_email'] . "\r\n\r\n";
+$message .= "Текст письма:" . "\r\n\r\n" . $_POST['feedback_message'];
 
-$headers = "Content-type: text/plain; charset=windows-1251 \r\n";
+$headers = 'Content-type: text/plain;';
 
 if (mail($to, $subject, $message, $headers)) {
     echo "<h3>Ваше сообщение успешно отправлено!</h3>";

@@ -7,7 +7,7 @@
 echo '<h3 style="text-align: center;">Если у Вас есть вопрос или предложение, 
     пожалуйста, свяжитесь со мной через эту форму</h3>
     <div id="feedback_block">
-    <form action="includes\feedback_email_action.php" method="POST">
+    <form action="includes/feedback_email_action.php" method="POST">
     
     <div class="feedback"><label for="name">Ваше имя: </label>
     <input type="text" id="name" name="feedback_user_name" 

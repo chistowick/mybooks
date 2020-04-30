@@ -36,7 +36,7 @@
 
     <!--Подключение таблицы стилей-->
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="https://mrbooks.ru/img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="https://mrbooks.ru/favicon.png" type="image/png">
 
 </head>
 
@@ -47,11 +47,11 @@
             <!--<h1>Мой читательский дневник</h1>-->
         </div>
         <div id="mainMenu">
-            <div class="button"><a href="index.php">СТАТЬИ</a></div>
-            <div class="button"><a href="index.php?pageName=about">О БЛОГЕ</a></div>
-            <div class="button"><a href="index.php?pageName=toread">ЧТО ПОЧИТАТЬ</a></div>
-            <div class="button"><a href="index.php?pageName=quotes">ЦИТАТЫ</a></div>
-            <div class="button"><a href="index.php?pageName=contacts">КОНТАКТЫ</a></div>
+            <div class="button"><a href="https://mrbooks.ru/publications">СТАТЬИ</a></div>
+            <div class="button"><a href="https://mrbooks.ru/about-me">О БЛОГЕ</a></div>
+            <div class="button"><a href="https://mrbooks.ru/what-to-read">ЧТО ПОЧИТАТЬ</a></div>
+            <div class="button"><a href="https://mrbooks.ru/quotes">ЦИТАТЫ</a></div>
+            <div class="button"><a href="https://mrbooks.ru/contacts">КОНТАКТЫ</a></div>
         </div>
 
         <div id='content'><!--Начало content-->

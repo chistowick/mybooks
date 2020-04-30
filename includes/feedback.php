@@ -31,5 +31,5 @@ echo '<h3 style="text-align: center;">Если у Вас есть вопрос �
     <div class="feedback"><input class="form_button" type="submit" value="Отправить" /></div>
     </form>
     </div>
-    <div id="quill_block"><img id="quill" src="img/quill.png"></div>
+    <div id="quill_block"><img id="quill" src="img\quill.png"></div>
     <div style="clear: both"></div>';

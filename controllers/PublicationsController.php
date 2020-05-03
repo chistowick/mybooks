@@ -1,13 +1,12 @@
 <?php
 
-include_once (ROOT . '/models/Publication.php');
-
 /**
  * Description of PublicationsController
  *
  */
-class PublicationsController {
+include_once (ROOT . '/models/Publication.php');
 
+class PublicationsController {
 
     // Uses the model to get a list of the 20 most recent publications
     public function actionGetList() {
@@ -17,6 +16,8 @@ class PublicationsController {
 
         if (!$publications_list) {
             echo "There should be a 'Page not found'";
+
+            return true;
         }
 
         include_once (ROOT . '/views/pages/publications_list.php');
@@ -33,10 +34,12 @@ class PublicationsController {
 
         if (!$one_publication) {
             echo "There should be a 'Page not found'";
+
+            return true;
         }
 
         include_once (ROOT . '/views/pages/one_publication.php');
-        
+
         return true;
     }
 

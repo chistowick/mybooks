@@ -11,7 +11,7 @@
     <p style="text-align: right;"><?= $one_publication['datestamp'] ?></p>
 
     <h3 class="back_href">
-        <a href="/publications">Вернуться на главную страницу</a>
+        <a href="https://mrbooks.ru">Вернуться на главную страницу</a>
     </h3>
 
 <?php endif; ?>
@@ -27,7 +27,7 @@
     <p style="text-align: right;"><?= $one_publication['datestamp'] ?></p>
 
     <h3 class="back_href">
-        <a href="/publications">Вернуться на главную страницу</a>
+        <a href="https://mrbooks.ru">Вернуться на главную страницу</a>
     </h3>
 
 <?php endif; ?>

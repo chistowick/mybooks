@@ -27,9 +27,6 @@ class Router {
 
         // Getting a query string
         $uri = $this->getURI();
-//        
-//        echo '$uri = ' . $uri;
-//        echo "</br>";
 
         // Checking the query string in routes.php
         foreach ($this->routes as $uri_pattern => $path) {
@@ -37,14 +34,6 @@ class Router {
 
                 // Forming an internal route with parameters from the URI
                 $internal_route = preg_replace("~$uri_pattern~", $path, $uri);
-//
-//                echo '"~$uri_pattern~" = ';
-//                print_r("~$uri_pattern~");
-//                echo "</br>";
-//                
-//                echo '$internal_route = ';
-//                print_r($internal_route);
-//                echo "</br>";
                 
                 // Deciding which controller and method will process the request
                 $parts_path = explode('/', $internal_route);

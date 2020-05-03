@@ -1,12 +1,12 @@
 <?php
 
-/* 
- * обработчик данных из формы includes\feedback.php, пересылающий 
- * введенные данные на почту
+/*
+ * Data handler from the feedback form 
+ * that sends the entered data to the email address
  */
 
 $to = "chistowick@yandex.ru";
-$subject = $_POST['feedback_message_subject'];
+$subject = $_POST['feedback_message_subject'] . ' *форма обратной связи на сайте mrbooks.ru*';
 
 $message = "Имя пользователя: " . $_POST['feedback_user_name'] . "\r\n";
 $message .= "Email пользователя: " . $_POST['feedback_user_email'] . "\r\n\r\n";
@@ -21,4 +21,4 @@ if (mail($to, $subject, $message, $headers)) {
 }
 
 echo "<br>";
-echo '<a href="../index.php" ><h3>Вернуться на сайт</h3></a>';
+echo '<a href="https://mrbooks.ru" ><h3>Вернуться на сайт</h3></a>';

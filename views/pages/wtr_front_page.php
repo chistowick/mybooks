@@ -1,6 +1,11 @@
+<!--Content of the "what to read" page-->
+
+<!--Connecting the top part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/top_side_index.php'); ?>
 
-<form action="https://mrbooks.ru/what-to-read/recommendations/by-genre" method="post">
+<!--content start-->
+<div id="wtr_select_genre">
+    <h2 id="hello">Выберите интересующий жанр, <br>а я постараюсь посоветовать хорошую книгу.</h2>
 
     <p><b>Фантастика</b></p>
     <ul>
@@ -25,8 +30,19 @@
         <li><label><input name="id_genre" type="radio" value="6">Юмористическая повесть</label></li>
     </ul>
 
-    <input type="hidden" name="what_to_read" value="request">
-    </br><input class="form_button" type="submit" value="Готово">
-</form>
+    </br><input class="form_button get_wtr_list" type="button" value="Готово">
+</div>
+<div id="recommendations_list"></div>
 
+<!--scripts js-->
+<?php
+// Array of scripts to load in the main template
+$scripts = array(
+    "1" => "<script src='https://mrbooks.ru/js/get_wtr_list.js'></script>",
+);
+?><!--end scripts js-->
+
+<!--content end-->
+
+<!--Connecting the bottom part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/bottom_side_index.php'); ?>

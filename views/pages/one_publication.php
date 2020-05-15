@@ -1,4 +1,9 @@
+<!--Content of the "one_publication" page-->
+
+<!--Connecting the top part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/top_side_index.php'); ?>
+
+<!--content start-->
 
 <?php if ($one_publication['type'] == 'Articles') : ?>
 
@@ -32,4 +37,7 @@
 
 <?php endif; ?>
 
+<!--content end-->
+
+<!--Connecting the bottom part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/bottom_side_index.php'); ?>

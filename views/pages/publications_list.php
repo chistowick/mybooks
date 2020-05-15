@@ -1,13 +1,18 @@
+<!--Content of the "publications list" page-->
+
+<!--Connecting the top part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/top_side_index.php'); ?>
+
+<!--content start-->
 
 <?php foreach ($publications_list as $publication) : ?> 
 
     <?php if ($publication['type'] == 'Articles') : ?>
 
-        <div class=publications">
+        <div class="publications <?= $publication['type'] ?>">
             <br><hr><br>
 
-            <a href="/publications/articles/<?= $publication['id'] ?>">
+            <a href="/publications/<?= $publication['id'] ?>">
                 <h3 class="title"><?= $publication['title'] ?></h3>
             </a>
 
@@ -21,14 +26,14 @@
 
     <?php if ($publication['type'] == 'Reviews') : ?>
 
-        <div class='publications'>
+        <div class="publications <?= $publication['type'] ?>">
             <br><hr><br>
 
-            <a href="/publications/reviews/<?= $publication['id'] ?>">
+            <a href="/publications/<?= $publication['id'] ?>">
                 <img class="imgReviews" src="https://mrbooks.ru/<?= $publication['main_image'] ?>">
             </a>
 
-            <a href="/publications/reviews/<?= $publication['id'] ?>">
+            <a href="/publications/<?= $publication['id'] ?>">
                 <h3 class="title"><?= $publication['title'] ?></h3>
             </a>
 
@@ -49,4 +54,7 @@
 
 <?php endforeach; ?>
 
+<!--content end-->
+
+<!--Connecting the bottom part of the main template-->
 <?php include_once (ROOT . '/views/main_parts/bottom_side_index.php'); ?>

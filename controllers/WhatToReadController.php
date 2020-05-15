@@ -1,44 +1,22 @@
 <?php
 
 /**
- * WhatToReadController selects which selection page to show as the start page 
- * and initiates output of the user's query results
+ * WhatToReadController partially checks the url's correctness 
+ * and outputs "what-to-read" front page
  */
-include_once (ROOT . '/models/WhatToRead.php');
-
 class WhatToReadController {
 
-    // Getting a list of recommended books according to the user's request 
-    public function actionGetRecommendations($by_option) {
+    // Output the start page of the tab what-to-read
+    public function actionGetFrontPage($empty = false) {
 
-        // If a post-request was received
-        if (isset($_POST['what_to_read'])
-                AND ( $_POST['what_to_read'] == 'request')) {
-
-            $recommendations_list = WhatToRead::getRecommendationsList($by_option);
-
-            include_once (ROOT . '/views/pages/wtr_recommendations_list.php');
-
-            return true;
+        // Validation of the entered url: If extra parameters were passed 
+        // from the URL, it means that the address is incorrect
+        if ($empty !== false) {
+            return false;
         }
 
-        $this->actionGetFrontPage('by-genre');
-
-        return true;
-    }
-
-    // Configuring the page for selecting query conditions
-    public function actionGetFrontPage($by_option) {
-
-        if ($by_option == 'by-author') {
-
-            $author_list = WhatToRead::getAuthorListForSelect();
-
-            include_once (ROOT . '/views/pages/wtr_selection_page_by_author.php');
-        } else {
-
-            include_once (ROOT . '/views/pages/wtr_selection_page_by_genre.php');
-        }
+        // Connecting the view
+        include_once (ROOT . '/views/pages/wtr_front_page.php');
 
         return true;
     }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    <!--Top part of the main template-->
     <head>
 
         <!-- Yandex.Metrika counter -->
@@ -34,18 +34,18 @@
 
     <title>Мой читательский дневник</title>
 
-    <!--Подключение таблицы стилей-->
+    <!--Styles and favicon-->
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="https://mrbooks.ru/favicon.png" type="image/png">
+    <!--End Styles-->
 
 </head>
 
 <body>
     <div id="wrapper">
 
-        <div id="header">
-            <!--<h1>Мой читательский дневник</h1>-->
-        </div>
+        <div id="header"></div>
+
         <div id="mainMenu">
             <div class="button"><a href="https://mrbooks.ru/publications">СТАТЬИ</a></div>
             <div class="button"><a href="https://mrbooks.ru/about-me">О БЛОГЕ</a></div>
@@ -54,4 +54,4 @@
             <div class="button"><a href="https://mrbooks.ru/contacts">КОНТАКТЫ</a></div>
         </div>
 
-        <div id='content'><!--Начало content-->
+        <div id="content"><!--Start content-->

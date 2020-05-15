@@ -1,10 +1,11 @@
 <?php
 
+// FRONT CONTROLLER
+
 /*
- * General settings.
- * Note: only for development period and 
- * if this is not configured by default in php.ini
-*/
+ * General settings. Note: only for development period and if this 
+ * is not configured by default in php.ini
+ */
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -16,4 +17,3 @@ require_once (ROOT . '/components/Database.php');
 // Calling Router
 $router = new Router();
 $router->run();
-

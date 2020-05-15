@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Description of Router
- *
- * @author Tolya and Nastya
+ * Router checks the URL, 
+ * routes user requests to the appropriate controller 
+ * or to the error page
  */
 class Router {
 
@@ -19,6 +19,13 @@ class Router {
     private function getURI() {
 
         if (!empty($_SERVER['REQUEST_URI'])) {
+
+            // URI validation
+            $pattern = '~^(\/[\w\.-]+)*\/?$~';
+            if (!preg_match($pattern, $_SERVER['REQUEST_URI'])) {
+                $this->printErrorPage('URI is not valid');
+            }
+
             return trim($_SERVER['REQUEST_URI'], '/');
         }
     }
@@ -34,7 +41,7 @@ class Router {
 
                 // Forming an internal route with parameters from the URI
                 $internal_route = preg_replace("~$uri_pattern~", $path, $uri);
-                
+
                 // Deciding which controller and method will process the request
                 $parts_path = explode('/', $internal_route);
 
@@ -49,7 +56,13 @@ class Router {
                 if (file_exists($controller_file)) {
                     include_once($controller_file);
                 }
-                
+
+                // If the method does not exist
+                if (!method_exists($controller_name, $action_name)) {
+
+                    $this->printErrorPage('method not exists');
+                }
+
                 // Creating a controller object and calling the required method.
                 $controller_obj = new $controller_name;
 
@@ -58,11 +71,26 @@ class Router {
                 $action_result = call_user_func_array(array($controller_obj,
                     $action_name), $param_arr);
 
+                // If the controller returned false
+                if ($action_result === false) {
+                    $this->printErrorPage('controller returns false');
+                }
+
+                // If the controller and method successfully processed the request 
                 if ($action_result != null) {
                     break;
                 }
             }
         }
+    }
+
+    // Returns 404-page
+    private function printErrorPage($message) {
+
+//      header("Location: https://www.mrbooks.ru");
+        header("HTTP/1.0 404 Not Found");
+        include_once (ROOT . '/views/errors/404.php');
+        exit;
     }
 
 }

@@ -1,15 +1,20 @@
 <?php
 
 /**
- * Description of Database
+ * Database - connects to the database with parameters 
+ * from the file the path to which is passed in the $path_to_config variable 
+ * and returns the database handler.
  */
 class Database {
 
     // Connecting to database and return database handler
-    public static function getConnection() {
+    public static function getConnection($path_to_config = FALSE) {
+
+        // Determining the path to the configuration file
+        $path_to_config = $path_to_config ?: '../htconfig/dbconnect.php';
 
         // Connecting database config
-        include ('../htconfig/dbconnect.php');
+        include ($path_to_config);
 
         try {
             // Creating a database handler  

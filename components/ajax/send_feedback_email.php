@@ -1,24 +1,55 @@
 <?php
 
 /*
- * Data handler from the feedback form 
- * that sends the entered data to the email address
+ * A data handler from the feedback form 
+ * that verifies the authenticity of the reCAPTCHA token and, 
+ * if confirmed, sends the entered data to the email address
  */
 
-$to = "chistowick@yandex.ru";
-$subject = $_POST['feedback_message_subject'] . ' *форма обратной связи на сайте mrbooks.ru*';
+$secret = include ('../../../burrow/reCAPTCHA.php');
 
-$message = "Имя пользователя: " . $_POST['feedback_user_name'] . "\r\n";
-$message .= "Email пользователя: " . $_POST['feedback_user_email'] . "\r\n\r\n";
-$message .= "Текст письма:" . "\r\n\r\n" . $_POST['feedback_message'];
-
-$headers = 'Content-type: text/plain;';
-
-if (mail($to, $subject, $message, $headers)) {
-    echo "<h3>Ваше сообщение успешно отправлено!</h3>";
-} else {
-    echo "<h3>Что-то пошло не так! Попробуйте ещё раз.</h3>";
+// If at least one parameter does not exist
+if (!isset($_POST['token'], $secret)) {
+    echo 'Что-то пошло не так (Internal error)';
+    exit;
 }
 
-echo "<br>";
-echo '<a href="https://mrbooks.ru" ><h3>Вернуться на сайт</h3></a>';
+$token = $_POST['token'];
+
+$url = 'https://www.google.com/recaptcha/api/siteverify';
+$post_fields = array(
+    'secret' => $secret,
+    'response' => $token,
+);
+
+// Open curl session
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // TRUE для возврата результата в качестве строки
+curl_setopt($ch, CURLOPT_POST, true); // TRUE для использования обычного HTTP POST
+curl_setopt($ch, CURLOPT_URL, $url); // Загружаемый URL
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields); // Все данные, передаваемые в HTTP POST-запросе
+// Writing the json response
+$response_json = curl_exec($ch);
+
+// Close curl session
+curl_close($ch);
+
+// Decoding json to object
+$response = json_decode($response_json);
+
+// If the server has confirmed the authenticity of the token, send an email 
+// and inform the js-client about it
+if ($response->success == TRUE) {
+
+    $to = "chistowick@yandex.ru";
+    $subj = $_POST['subj'] . ' *mrbooks.ru*';
+    $message = $_POST['textArea'];
+    $headers = 'Content-type: text/plain;';
+
+    if (mail($to, $subj, $message, $headers)) {
+        echo 'true';
+    } else {
+        echo 'Письмо не было принято для передачи';
+    }
+}

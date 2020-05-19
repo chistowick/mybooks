@@ -1,11 +1,11 @@
 @font-face {
     font-family: NotoSerifDisplay-Bold; /* Гарнитура шрифта */
     src: url(fonts/NotoSerifDisplay-Bold.ttf) /* Путь к файлу со шрифтом */
-   }
-   
+}
+
 body {
     font-family: "Trebuchet MS", Verdana;
-    background-position: left bottom;
+    /*background-position: left bottom;*/
     background-image: url(../img/patt3.png);
     background-repeat: repeat;
     background-size: 20%;
@@ -116,7 +116,7 @@ body {
 }
 
 /*Оформление таблиц с книгами*/
-#booktable{
+#book_table{
     border: 2px solid white;
     border-spacing: 6px;
     border-collapse: separate;
@@ -127,15 +127,15 @@ td {
     background: aquamarine;
 }
 
-#firstrow {
+#first_row {
     background: lightpink;
 }
 
-.authorrow {
+.author_row {
     background: lightblue;
 }
 
-.notrow {
+.not_row {
     background: none;
     height: 5px;
 }
@@ -255,21 +255,21 @@ ul.disliked {
 }
 
 ul.disliked li {
-  background: url(../img/minus.png) no-repeat left top;
-  list-style-type: none;
-  padding-left: 25px;
+    background: url(../img/minus.png) no-repeat left top;
+    list-style-type: none;
+    padding-left: 25px;
 }
 
 ul.liked {
-/*    list-style-image: url(../img/plus.png);*/
+    /*    list-style-image: url(../img/plus.png);*/
     display: block;
     width: 50%;
 }
 
 ul.liked li {
-  background: url(../img/plus.png) no-repeat left center;
-  list-style-type: none;
-  padding-left: 25px;
+    background: url(../img/plus.png) no-repeat left center;
+    list-style-type: none;
+    padding-left: 25px;
 }
 
 .stars {
@@ -277,7 +277,7 @@ ul.liked li {
 }
 /*Ссылки на главную страницу*/
 .back_href {
-    
+
 }
 
 /*Форма обратной связи*/
@@ -292,16 +292,39 @@ ul.liked li {
     float: right;
     padding-top: 30px;
 }
+#wrap_recaptha_and_button {
+    width: 100%;
+    padding: 0px;
+    text-align:center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
-.feedback input, textarea {
+.g-recaptcha {
+    margin-bottom: 8px;
+}
+
+.feedback_elem label {
+    display: block;
+    margin-top: 10px;
+}
+
+.feedback_elem input {
+    display: block;
+}
+
+.feedback_elem input, textarea {
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 8px;
     border: 2px solid lightgray;
     border-radius: 10px;
     font: 100% "Trebuchet MS", Tahoma, Verdana; 
 }
 
-.feedback input[type=text]:focus, 
-.feedback input[type=email]:focus, 
+.feedback_elem input[type=text]:focus,
 textarea:focus{
     outline: none;
     border: 2px solid gray;
@@ -309,48 +332,17 @@ textarea:focus{
 }    
 textarea {
     width: calc(100% - 18px);
-    margin-top: 5px;
     resize: none;
 }
 
-.feedback {
-    position: relative;
-    min-height: 40px;
-    padding-bottom: 5px;
-    margin-top: 5px;
-}
-
-#textAreaBlock {
-    margin-top: 20px;
-    min-height: 16px;
-}
-
-.feedback label {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-    width: 33%;
-    bottom: 5px;
-    left: 0;
-}
-
-.feedback input {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-#name, #email {
-    box-sizing: border-box;
-    width: 50%;
-    margin-right: 15%;
+#feedback_button {
+    height: 100%;
+    vertical-align:bottom;
 }
 
 #subj {
     box-sizing: border-box;
-    width: 65%;
-    margin-right: 0;
+    width: 100%;
 }
 /*End*/
 
@@ -371,3 +363,38 @@ textarea {
     background-color: #77f7a8;
 }
 /*End*/
+
+/*Оформление страницы 404*/
+
+#div_404{
+    margin-top: 60px; 
+}
+
+#num_404 {
+    text-indent: 0px !important;
+    text-align: center !important;
+    display: block;
+    margin: 0px auto 0px auto;
+    font: 1000% "Trebuchet MS", Tahoma, Verdana !important ;
+    color: #187951;
+}
+
+#text_under_404 {
+    text-indent: 0px !important;
+    text-align: center !important;
+    display: block;
+    margin: 0px auto 0px auto;
+    font: 400% "Trebuchet MS", Tahoma, Verdana !important ;
+    font-style: italic !important;
+    color: #187951;
+}
+
+/*Заголовки на страницах*/
+#hello_wtr_result{
+
+}
+
+#hello {
+    text-align: center;
+    line-height: 150% !important;
+}

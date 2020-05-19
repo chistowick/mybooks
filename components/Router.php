@@ -78,10 +78,12 @@ class Router {
 
                 // If the controller and method successfully processed the request 
                 if ($action_result != null) {
-                    break;
+                    return TRUE;
                 }
             }
         }
+        // If the route is not found 
+        $this->printErrorPage('the route is not found');
     }
 
     // Returns 404-page
@@ -89,6 +91,7 @@ class Router {
 
 //      header("Location: https://www.mrbooks.ru");
         header("HTTP/1.0 404 Not Found");
+//        echo $message;
         include_once (ROOT . '/views/errors/404.php');
         exit;
     }

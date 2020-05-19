@@ -267,17 +267,13 @@ ul.liked {
 }
 
 ul.liked li {
-    background: url(../img/plus.png) no-repeat left center;
+    background: url(../img/plus.png) no-repeat left top;
     list-style-type: none;
     padding-left: 25px;
 }
 
 .stars {
     margin: 0;
-}
-/*Ссылки на главную страницу*/
-.back_href {
-
 }
 
 /*Форма обратной связи*/
@@ -301,7 +297,7 @@ ul.liked li {
     justify-content: space-between;
     align-items: flex-start;
 }
-
+/*Блок с reCAPTCHA*/
 .g-recaptcha {
     margin-bottom: 8px;
 }

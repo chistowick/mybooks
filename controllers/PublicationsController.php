@@ -5,7 +5,6 @@ include_once (ROOT . '/models/Publication.php');
 
 /*
  * PublicationsController 
- * partially checks the url's correctness, 
  * accesses to the model "Publication.php" to access the database for getting 
  * information about publications 
  * and connects the front page view
@@ -14,13 +13,7 @@ include_once (ROOT . '/models/Publication.php');
 class PublicationsController {
 
     // Uses the model to get a list of the 20 most recent publications
-    public function actionGetList($empty = false) {
-
-        // Validation of the entered url: If extra parameters were passed 
-        // from the URL, it means that the address is incorrect
-        if ($empty !== false) {
-            return false;
-        }
+    public function actionGetList() {
 
         $publications_list = array();
         $publications_list = Publication::getPublicationsList();
@@ -37,22 +30,9 @@ class PublicationsController {
     }
 
     // Uses the model to get a single publication
-    public function actionGetOneItem($id, $empty = false) {
+    public function actionGetOneItem($id) {
 
-        // Validation of the entered url: If extra parameters were passed 
-        // from the URL, it means that the address is incorrect
-        if ($empty !== false) {
-            return false;
-        }
-
-        // If $id is not a pure number. And validation $id
-        if (!ctype_digit($id) OR ( $id == 0)) {
-            return false;
-        }
-
-        if ($id) {
-            $one_publication = Publication::getOnePublicationById($id);
-        }
+        $one_publication = Publication::getOnePublicationById($id);
 
         // if the responce is empty
         if (!$one_publication) {

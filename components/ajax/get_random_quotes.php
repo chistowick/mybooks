@@ -5,7 +5,7 @@
 require_once ('../Database.php');
 
 // Connect to the database with the parameters in the file at...
-$dbh = Database::getConnection('../../../htconfig/dbconnect.php');
+$dbh = Database::getConnection();
 
 define("QUANTITY", 5);
 

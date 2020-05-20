@@ -5,7 +5,7 @@
 require_once ('../Database.php');
 
 // Connect to the database with the parameters in the file at...
-$dbh = Database::getConnection('../../../htconfig/dbconnect.php');
+$dbh = Database::getConnection();
 
 // Preparing and executing a request
 $sql = "SELECT * FROM books WHERE id_genre = ? "
